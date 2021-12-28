@@ -51,3 +51,43 @@ abstract class GreeterServiceBase extends $grpc.Service {
   $async.Future<$0.HelloReply> sayHello(
       $grpc.ServiceCall call, $0.HelloRequest request);
 }
+
+class GreeterV2Client extends $grpc.Client {
+  static final _$sayHelloV2 =
+      $grpc.ClientMethod<$0.HelloRequestV2, $0.HelloReplyV2>(
+          '/helloworld.GreeterV2/SayHelloV2',
+          ($0.HelloRequestV2 value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.HelloReplyV2.fromBuffer(value));
+
+  GreeterV2Client($grpc.ClientChannel channel,
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
+
+  $grpc.ResponseFuture<$0.HelloReplyV2> sayHelloV2($0.HelloRequestV2 request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$sayHelloV2, request, options: options);
+  }
+}
+
+abstract class GreeterV2ServiceBase extends $grpc.Service {
+  $core.String get $name => 'helloworld.GreeterV2';
+
+  GreeterV2ServiceBase() {
+    $addMethod($grpc.ServiceMethod<$0.HelloRequestV2, $0.HelloReplyV2>(
+        'SayHelloV2',
+        sayHelloV2_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.HelloRequestV2.fromBuffer(value),
+        ($0.HelloReplyV2 value) => value.writeToBuffer()));
+  }
+
+  $async.Future<$0.HelloReplyV2> sayHelloV2_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.HelloRequestV2> request) async {
+    return sayHelloV2(call, await request);
+  }
+
+  $async.Future<$0.HelloReplyV2> sayHelloV2(
+      $grpc.ServiceCall call, $0.HelloRequestV2 request);
+}

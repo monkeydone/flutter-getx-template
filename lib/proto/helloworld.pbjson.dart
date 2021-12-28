@@ -8,7 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-
 @$core.Deprecated('Use helloRequestDescriptor instead')
 const HelloRequest$json = const {
   '1': 'HelloRequest',
@@ -18,8 +17,7 @@ const HelloRequest$json = const {
 };
 
 /// Descriptor for `HelloRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List helloRequestDescriptor =
-    $convert.base64Decode('CgxIZWxsb1JlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZQ==');
+final $typed_data.Uint8List helloRequestDescriptor = $convert.base64Decode('CgxIZWxsb1JlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZQ==');
 @$core.Deprecated('Use helloReplyDescriptor instead')
 const HelloReply$json = const {
   '1': 'HelloReply',
@@ -29,5 +27,25 @@ const HelloReply$json = const {
 };
 
 /// Descriptor for `HelloReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List helloReplyDescriptor = $convert
-    .base64Decode('CgpIZWxsb1JlcGx5EhgKB21lc3NhZ2UYASABKAlSB21lc3NhZ2U=');
+final $typed_data.Uint8List helloReplyDescriptor = $convert.base64Decode('CgpIZWxsb1JlcGx5EhgKB21lc3NhZ2UYASABKAlSB21lc3NhZ2U=');
+@$core.Deprecated('Use helloRequestV2Descriptor instead')
+const HelloRequestV2$json = const {
+  '1': 'HelloRequestV2',
+  '2': const [
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+  ],
+};
+
+/// Descriptor for `HelloRequestV2`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List helloRequestV2Descriptor = $convert.base64Decode('Cg5IZWxsb1JlcXVlc3RWMhISCgRuYW1lGAEgASgJUgRuYW1l');
+@$core.Deprecated('Use helloReplyV2Descriptor instead')
+const HelloReplyV2$json = const {
+  '1': 'HelloReplyV2',
+  '2': const [
+    const {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
+    const {'1': 'version', '3': 2, '4': 1, '5': 5, '10': 'version'},
+  ],
+};
+
+/// Descriptor for `HelloReplyV2`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List helloReplyV2Descriptor = $convert.base64Decode('CgxIZWxsb1JlcGx5VjISGAoHbWVzc2FnZRgBIAEoCVIHbWVzc2FnZRIYCgd2ZXJzaW9uGAIgASgFUgd2ZXJzaW9u');

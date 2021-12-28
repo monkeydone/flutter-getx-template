@@ -318,4 +318,21 @@ class GrpcRequest {
     await channel.shutdown();
     return HelloReply.create();
   }
+
+  Future<HelloReplyV2> getHelloRequestV2({name = "world"}) async {
+    var channel = _getChannel();
+    final stub = GreeterV2Client(channel);
+    try {
+      final response = await stub.sayHelloV2(
+        HelloRequestV2()..name = name,
+        options: CallOptions(compression: const GzipCodec()),
+      );
+      print('Greeter client received: ${response.message}');
+      return response;
+    } catch (e) {
+      print('Caught error: $e');
+    }
+    await channel.shutdown();
+    return HelloReplyV2.create();
+  }
 }

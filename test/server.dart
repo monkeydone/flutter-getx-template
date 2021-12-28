@@ -25,9 +25,18 @@ class GreeterService extends GreeterServiceBase {
   }
 }
 
+class GreeterV2Service extends GreeterV2ServiceBase {
+  @override
+  Future<HelloReplyV2> sayHelloV2(ServiceCall call, HelloRequestV2 request) async {
+    return HelloReplyV2()..message = 'Hello, ${request.name}!'..version=2;
+  }
+}
+
 Future<void> main(List<String> args) async {
   final server = Server(
-    [GreeterService()],
+    [GreeterService(),
+     GreeterV2Service()
+    ],
     const <Interceptor>[],
     CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
   );
