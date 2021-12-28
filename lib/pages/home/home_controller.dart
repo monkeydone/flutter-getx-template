@@ -1,3 +1,4 @@
+import 'package:flutter_getx_template/utils/request.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -22,5 +23,13 @@ class HomeController extends GetxController {
   void changeUserName() {
     userName = 'juefei';
     update();
+    getHelloReply();
+  }
+
+  void getHelloReply() {
+    GrpcRequest().getHelloRequest(name:"dart").then((value) {
+      userName = value.message;
+      update();
+    });
   }
 }
