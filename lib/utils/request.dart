@@ -284,21 +284,26 @@ class GrpcRequest {
   static GrpcRequest _instance = GrpcRequest._internal();
 
   factory GrpcRequest() => _instance;
-  late ClientChannel channel;
 
   GrpcRequest._internal() {
-    channel = ClientChannel(
+
+  }
+
+  ClientChannel _getChannel() {
+    var channel = ClientChannel(
       GRPC_SERVER_HOST,
       port: GRPC_PORT,
       options: ChannelOptions(
         credentials: ChannelCredentials.insecure(),
         codecRegistry:
-            CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
+        CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
       ),
     );
+    return channel;
   }
 
   Future<HelloReply> getHelloRequest({name = "world"}) async {
+    var channel = _getChannel();
     final stub = GreeterClient(channel);
     try {
       final response = await stub.sayHello(
