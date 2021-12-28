@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final count = 0.obs;
 
+  final index = 1.obs;
   String userName = 'burnish';
 
   @override
@@ -27,6 +28,11 @@ class HomeController extends GetxController {
     userName = 'juefei';
     update();
     getHelloReply();
+  }
+
+  void changePage(i) {
+    index.value = i;
+    update();
   }
 
   void getHelloReply() {

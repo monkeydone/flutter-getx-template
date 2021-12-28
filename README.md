@@ -10,6 +10,11 @@
 [Flutter中使用Protobuf](https://cloud.tencent.com/developer/article/1411245)
 
 
+## 目的
+这个template本身已经很方便的完成ui和ui的状态同步,剩下的工作需要我们从服务器拿到数据,然后绘制UI.一般使用json.使用json的时候,需要手动创建model对象.
+对于简单的对象还是比较容易的.对于复杂的对象.就需要做不断的调试和修改,
+我用过比较好的是[jsontomodel的网页生成器](https://www.webinovers.com/web-tools/json-to-dart-convertor)
+很多公司使用protobuf来完成这个model的定义过程.那么我们就可以直接使用这个对象了.网上没有找到简单入门可见的例子.所以总结一下.把文章发出来方便大家使用
 
 
 ##演示
@@ -130,3 +135,6 @@ Future<void> helloV2({name="world v2"}) async {
       HelloReply ii = HelloReply.create()..mergeFromProto3Json(data3);
       print(ii.message);
 ```
+
+# 源码地址
+[github地址](git@github.com:monkeydone/flutter-getx-template.git)
